@@ -1,6 +1,7 @@
 # Return list(c(allele from p1, corresponding allele in c), c(allele from p2, corresponding allele in c))
+# p1: Mother p2: Father
 # Assume input has no NAs or 0s
-# NA means edge case and cannot tell optimal
+# NA in return means edge case and cannot tell optimal
 # One return result means X chromosome gene and transmission from mother -> son
 return_transmissions <- function(p1, p2, ch) {
   order <- c(NA, NA) # order[1]: parent who contributed c[1] and order[2]: parent who contributed c[2]
