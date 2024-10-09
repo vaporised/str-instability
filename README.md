@@ -1,5 +1,9 @@
 # str-instability
-Code for my Honours project "Genomic Instability of Tandem Repeat Expansion Disorders"
+Code and data for my Honours project "Genomic Instability of Tandem Repeat Expansion Disorders"
+
+
+## str_disease_trios.csv
+This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, `2` for female.
 
 ## return_transmissions.R
 An algorithm that returns the most likely transmissions of (parent allele ? -> child allele 1) + (parent allele ? -> child allele 2). This algorithm optimises based on minimum repeat length changes from parent to child. However it will always prioritise stable transmissions.
