@@ -3,10 +3,10 @@ Code and data for my Honours project "Genomic Instability of Tandem Repeat Expan
 
 
 ## str_disease_trios.csv
-This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, `2` for female.
+This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, '2' for female.
 
 ## return_transmissions.R
-An algorithm that returns the most likely transmissions of (parent allele ? -> child allele 1) + (parent allele ? -> child allele 2). This algorithm optimises based on minimum repeat length changes from parent to child. However it will always prioritise stable transmissions.
+An algorithm that returns the most likely inherited parental STR alleles for a trio. This is returned as a list of two vectors, where each vector represents the transmission of an STR allele to the child. The first vector is the maternal transmission and the second is the paternal transmission. It takes 3 vectors as input that represent the genotypes of the trio members (in repeat units), in the order of mother, father, and child. This supports the different inheritance patterns of loci on the X chromosome. This algorithm optimises based on a least-euclidean distance method to minimise the repeat magnitude changes from parent to child. However, it will always prioritise stable transmissions before a lower average repeat magnitude change.
 
 Takes 3 vectors each containing the 2 alleles (repeat lengths) in the trio member for any locus. 
 
