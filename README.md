@@ -1,6 +1,8 @@
 # str-instability
 Code and data for my Honours project "Genomic Instability of Tandem Repeat Expansion Disorders"
 
+## str_catalog_final.json.zip
+This compressed file contains the genome-wide catalog of 173,113 polymorphic STR loci, including 71 pathogenic loci. This is designed for use with the STR genotyping tool ExpansionHunter.
 
 ## str_disease_trios.csv
 This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, '2' for female.
