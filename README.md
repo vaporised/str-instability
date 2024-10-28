@@ -10,6 +10,12 @@ This file contains the extracted genotypes for all 71 pathogenic loci across all
 ## transmissions_pathogenic_postQC.csv
 This file is the transformed and QCed version of `str_disease_trios.csv`, ready for analysis. It has been converted to have each row represent an STR allele transmission from parent to child (using `return_transmissions.R`). `RefCopies` is the calculated reference number of copies in GRCh38 or minimum 'normal' value from STRchive, whichever is higher. `ParentAllele` and `ChildAllele` are in repeat units. `Magnitude` refers to the distance between the parent and child alleles.
 
+## 3_analysis.R
+The file I used to produce most of the plots/statistical analysis for the 71 pathogenic loci locally on my machine after data processing.
+
+## genomewide_analysis.R
+The file I used to produce most of the plots/statistical analysis for the entire catalogue remotely on a supercomputer after data processing.
+
 ## return_transmissions.R
 An algorithm that returns the most likely inherited parental STR alleles for a trio. This is returned as a list of two vectors, where each vector represents the transmission of an STR allele to the child. The first vector is the maternal transmission and the second is the paternal transmission. It takes 3 vectors as input that represent the genotypes of the trio members (in repeat units), in the order of mother, father, and child. This supports the different inheritance patterns of loci on the X chromosome. This algorithm optimises based on a least-euclidean distance method to minimise the repeat magnitude changes from parent to child. However, it will always prioritise stable transmissions before a lower average repeat magnitude change.
 
