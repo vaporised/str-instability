@@ -1,6 +1,6 @@
 # str-instability
 Code and data for my Honours project "Genomic Instability of Tandem Repeat Expansion Disorders"
-I haven't added data from the whole catalogue as it was too big.
+I haven't added data from the whole STR catalogue I made as it was too big, but I've provided data for the pathogenic loci after it was extracted from ExpansionHunter and after QC.
 
 ## str_disease_trios.csv
 This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, '2' for female.
