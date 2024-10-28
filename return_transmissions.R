@@ -25,7 +25,7 @@ return_transmissions <- function(p1, p2, ch) {
     } else if (0 %in% p2_p1_mins) { # c[1] from father and c[2] from mother is optimal
       return(list(p2, p1))
     } else { # Double mutation! Take averages of minimum distances to decide order
-      if (mean(p1_p2_mins) == mean(p2_p1_mins) ) { # Cannot decide order if both arrangements are optimal, edge case
+        if (mean(p1_p2_mins) == mean(p2_p1_mins) ) { # Cannot decide order if both arrangements are optimal, edge case
         return(list(NA, NA)) 
       } else if (mean(p1_p2_mins) < mean(p2_p1_mins)) {
         return(list(p1, p2))
@@ -38,7 +38,10 @@ return_transmissions <- function(p1, p2, ch) {
   # Return most likely parent allele using child allele
   # NA if there are two options (one contraction one expansion but same distance)
   get_original_parental_allele <- function(parent, child_allele) {
-    if ((abs(parent[1] - child_allele) == 0) & (abs(parent[2] - child_allele) == 0)) { # Both alleles same distance away
+    if (abs(parent[1] - child_allele) == 0 & abs(parent[2] - child_allele) == 0) { # Stable either way
+      return(parent[1])
+    }
+    if (abs(parent[1] - child_allele) == abs(parent[2] - child_allele)) { # Both alleles same distance away
       if (parent[1] == parent[2]) { # Parental alleles are the same, can select this as the original allele
         return(parent[1])
       } else {
@@ -72,11 +75,11 @@ return_transmissions <- function(p1, p2, ch) {
       maternal_transmission <- NA
       if (length(order[[1]]) == 2) {
         maternal_transmission <- c(get_original_parental_allele(order[[1]], ch[1]), ch[1])
-        if (is.na(maternal_transmission[1])) maternal_transmission <- NA
+        if (is.na(maternal_transmission[1])) return(list(NA, NA))
         return(list(maternal_transmission, c(p2[1], ch[2])))
       } else {
         maternal_transmission <- c(get_original_parental_allele(order[[2]], ch[2]), ch[2])
-        if (is.na(maternal_transmission[1])) maternal_transmission <- NA
+        if (is.na(maternal_transmission[1])) return(list(NA, NA))
         return(list(maternal_transmission, c(p2[1], ch[1])))
       }
     }
@@ -112,8 +115,9 @@ return_transmissions <- function(p1, p2, ch) {
   # Edge case if can't tell (same distance in opposite directions)
   c1_transmission <- c(get_original_parental_allele(order[[1]], ch[1]), ch[1])
   c2_transmission <- c(get_original_parental_allele(order[[2]], ch[2]), ch[2])
-  if (is.na(c1_transmission[1])) c1_transmission <- NA
-  if (is.na(c2_transmission[1])) c2_transmission <- NA 
+  
+  # Reject both if either could not be determined
+  if (any(is.na(c1_transmission[1]), is.na(c2_transmission[1]))) return(list(NA, NA))
   
   if (all(order[[1]] == p1)) {
     return(list(c1_transmission, c2_transmission))
