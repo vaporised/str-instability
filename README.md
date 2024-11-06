@@ -1,6 +1,7 @@
 # str-instability
 Code and data for my Honours project "Genomic Instability of Tandem Repeat Expansion Disorders"
 I haven't added data from the whole STR catalogue I made as it was too big, but I've provided data for the pathogenic loci after it was extracted from ExpansionHunter and after QC.
+The catalogue containing all STR loci is also available.
 
 ## str_disease_trios.csv
 This file contains the extracted genotypes for all 71 pathogenic loci across all related 1000 Genomes Project (1KG) individuals. A '0' in the `FatherID` and `MotherID` columns means the parent's data is not in 1KG. A '1' in `Sex` is male, '2' for female.
@@ -13,6 +14,9 @@ The file I used to produce most of the plots/statistical analysis for the 71 pat
 
 ## genomewide_analysis.R
 The file I used to produce most of the plots/statistical analysis for the entire catalogue remotely on a supercomputer after data processing.
+
+## str_catalog_final.json.zip
+Zipped STR catalogue containing all STR loci. Includes homopolymers. Once the homopolymers are removed this is the equivalent of the final STR catalogue used in my analysis.
 
 ## return_transmissions.R
 An algorithm that returns the most likely inherited parental STR alleles for a trio. This is returned as a list of two vectors, where each vector represents the transmission of an STR allele to the child. The first vector is the maternal transmission and the second is the paternal transmission. It takes 3 vectors as input that represent the genotypes of the trio members (in repeat units), in the order of mother, father, and child. This supports the different inheritance patterns of loci on the X chromosome. This algorithm optimises based on a least-euclidean distance method to minimise the repeat magnitude changes from parent to child. However, it will always prioritise stable transmissions before a lower average repeat magnitude change.
