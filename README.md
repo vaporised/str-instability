@@ -33,3 +33,6 @@ transmissions <- return_transmissions(mother_alleles, father_alleles, child_alle
 ```
 
 Here, the `transmissions` variable will be a list containing `c(9, 9)` as the first element and `c(4, 5)` as the second element. The first element is the maternal transmission, with the 9 repeat allele in the mother being the allele of origin for the 9 repeat allele in the child. The second element is the paternal transmission, with the 4 repeat allele in the father being the allele of origin for the 5 repeat allele in the child. In this example a paternal expansion occurs from 4 to 5 in the child.
+
+## 1kg_v3.ped
+Pedigree for 1000 Genomes Phase 3 30X, retrieved from 1000 Genomes website.
